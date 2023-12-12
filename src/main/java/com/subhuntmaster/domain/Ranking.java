@@ -6,7 +6,7 @@ import lombok.Data;
 import java.io.Serializable;
 @Data
 @Entity
-public class Ranking implements Serializable {
+public class Ranking {
 
     @EmbeddedId
     private RankingKey id;

@@ -1,0 +1,49 @@
+User Stories and Features:
+
+    As an admin, I want to manage club members' information.
+    As an admin, I want to manage competition details (create, update, delete).
+    As a club member, I want to register for a competition.
+    As an admin, I want to search for a club member by number, name, or surname.
+    As an admin, I want to record competition results.
+    As an admin, I want to display the podium for a competition.
+    As an admin, I want to display the results for all participants in a competition.
+    As a system, I want to verify the uniqueness of a competition code.
+    As a system, I want to calculate points based on the difficulty level of fish.
+Back-End Development:
+
+    Implement Member entity with attributes (membership number, name, surname, ID, nationality, join date).
+    Implement Competition entity with attributes (code, date, start time, end time, participants count, location).
+    Implement Fish entity with attributes (scientific name, average weight).
+    Implement CompetitionResult entity with attributes (number of fish).
+    Implement CompetitionDifficulty entity with attributes (level, points).
+    Database Setup:
+
+    Create database tables for Member, Competition, Fish, CompetitionResult, and CompetitionDifficulty.
+    Define relationships between entities.
+    Validation and Business Rules:
+
+    Implement logic to check the existence of a competition before adding a new one.
+    Implement logic to increase the number of fish caught when recording competition results.
+    Implement logic to validate and calculate points based on difficulty levels.
+
+Front-End Development:
+
+    Create screens for managing club members.
+    Create screens for managing competitions.
+    Create screens for registration for competitions.
+    Create screens for displaying competition results and podium.
+    User Authentication and Authorization:
+
+    Implement user authentication for admin and club members.
+    Set up authorization rules to control access to different functionalities.
+    Testing:
+
+    Write unit tests for key components and functionalities.
+    Perform integration testing to ensure the different parts of the system work together.
+    Conduct user acceptance testing to ensure the application meets user requirements.
+Documentation:
+
+    Document database schema and relationships.
+    Provide user documentation for admin and club members.
+    Include code documentation for developers.
+    Remember to break down these tasks further into smaller, more manageable sub-tasks if needed. Also, adjust and customize these tasks based on your team's workflow and the specific requirements of your project.
