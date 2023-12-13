@@ -9,8 +9,8 @@ import java.io.Serializable;
 @Data
 public class RankingKey implements Serializable{
 
-    @Column(name = "competition_id")
-    private Long competitionId;
+    @Column(name = "competition_code")
+    private String competitionCode;
     @Column(name = "member_id")
     private Long memberId;
 }

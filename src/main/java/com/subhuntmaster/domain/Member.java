@@ -2,21 +2,19 @@ package com.subhuntmaster.domain;
 
 import com.subhuntmaster.enums.IdentityDocumentType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-@Entity
-@Data
 @Builder
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,8 +39,10 @@ public class Member {
     private String identityNumber;
 
     @OneToMany(mappedBy = "member")
+    @ToString.Exclude
     private List<Ranking> rankings = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "member")
+    @ToString.Exclude
     private List<Hunting> huntings = new ArrayList<>();
 }

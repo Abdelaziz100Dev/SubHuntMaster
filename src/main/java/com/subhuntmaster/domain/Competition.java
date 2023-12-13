@@ -1,27 +1,23 @@
 package com.subhuntmaster.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Data
 @Builder
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Competition {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
-    private String Code;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "code", nullable = false)
+    private String code;
 
     @Temporal(TemporalType.DATE) // by default, it is TemporalType.TIMESTAMP
     private Date date;
@@ -32,8 +28,10 @@ public class Competition {
     @Temporal(TemporalType.TIME)
     private Date endTime;
 
-    private Integer numberOfparticipants;
+    private Integer numberOfParticipants;
+
     private String location;
+
     private float amount;
 
     @OneToMany(mappedBy = "competition")

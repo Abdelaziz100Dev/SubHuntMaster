@@ -1,27 +1,33 @@
 package com.subhuntmaster.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-import java.io.Serializable;
-@Data
+@Builder
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Table(name = "rankings")
 public class Ranking {
 
     @EmbeddedId
-    private RankingKey id;
+    private RankingKey id = new RankingKey();
+    @Column(name = "`rank`")
+    private Integer rank;
+    private Integer score;
 
     @ManyToOne
-    @MapsId("competitionId")
+    @MapsId("competitionCode")
     @JoinColumn(name = "competition_id")
-    Competition competition;
+    private Competition competition;
 
     @ManyToOne
     @MapsId("memberId")
     @JoinColumn(name = "member_id")
-    Member member;
+    private Member member;
 
-    int rank;
-    int score;
+
 
 }
