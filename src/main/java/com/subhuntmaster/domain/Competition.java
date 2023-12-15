@@ -15,8 +15,10 @@ import java.util.List;
 @Setter
 public class Competition {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "code", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true)
     private String code;
 
     @Temporal(TemporalType.DATE) // by default, it is TemporalType.TIMESTAMP

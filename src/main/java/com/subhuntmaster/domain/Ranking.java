@@ -14,6 +14,7 @@ public class Ranking {
 
     @EmbeddedId
     private RankingKey id = new RankingKey();
+
     @Column(name = "`rank`")
     private Integer rank;
     private Integer score;

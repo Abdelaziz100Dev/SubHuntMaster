@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class RankingKey implements Serializable{
 
     @Column(name = "competition_code")
-    private String competitionCode;
+    private Long competitionCode;
     @Column(name = "member_id")
     private Long memberId;
 }

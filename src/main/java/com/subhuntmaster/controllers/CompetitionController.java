@@ -6,10 +6,7 @@ import com.subhuntmaster.services.interfaces.CompetitionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,9 +24,31 @@ public class CompetitionController {
     public ResponseEntity<List<CompetitionDto>>  getAll() {
         return  new ResponseEntity<>(competitionService.getAll(), HttpStatus.OK);
     }
+    @GetMapping("/{code}")
+    public ResponseEntity<Competition> getCompetitionByCode(String code) {
+        return  new ResponseEntity<>(competitionService.getCompetitionByCode(code), HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
 
     @PostMapping("")
-    public ResponseEntity<Competition> save(Competition competition) {
+    public ResponseEntity<Competition> save(@RequestBody Competition competition) {
         return  new ResponseEntity<>(competitionService.save(competition), HttpStatus.OK);
     }
+
+//    @DeleteMapping("/{code}")
+//    public ResponseEntity<Competition> delete(@PathVariable String code) {
+//        return  new ResponseEntity<>(competitionService.delete(code), HttpStatus.OK);
+//    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable Long id) {
+        return  competitionService.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Competition> update(@PathVariable Long id, @RequestBody Competition competition) {
+        return  new ResponseEntity<>(competitionService.update(id, competition), HttpStatus.OK);
+    }
+
+
 }

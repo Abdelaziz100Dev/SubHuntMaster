@@ -1,10 +1,19 @@
 package com.subhuntmaster.dto;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
-/**
- * DTO for {@link com.subhuntmaster.domain.Member}
- */
-public record MemberDto(String firstName, String lastName, Date accessionDate) implements Serializable {
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class MemberDto {
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private Date accessionDate;
 }

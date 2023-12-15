@@ -36,9 +36,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponseFormat> handleValidationException(
             MethodArgumentNotValidException exception, HttpServletRequest request) {
-
-
-
         Map<String, List<String>> errorDetails = exception.getBindingResult()
                 .getFieldErrors()
                 .stream()
@@ -74,6 +71,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponseSimpleFormat> handleDataIntegrityViolationException(
             DataIntegrityViolationException exception, HttpServletRequest request) {
 
+        errorSimpleResponse.setStatus("400");
         errorSimpleResponse.setTimestamp(LocalDateTime.now());
         errorSimpleResponse.setMessage("Data Integrity Violation");
         errorSimpleResponse.setDetails(Arrays.asList(exception.getMessage().split(";")));

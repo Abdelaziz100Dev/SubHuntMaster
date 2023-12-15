@@ -15,4 +15,5 @@ public class ErrorResponseSimpleFormat {
     private  String message;
     private  List<String> details;
     private  String path;
+    private String status;
 }
