@@ -1,5 +1,6 @@
 package com.subhuntmaster.commons.exceptions;
 
+import java.net.ConnectException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,6 +13,7 @@ import com.subhuntmaster.commons.responses.ErrorResponseFormat;
 import com.subhuntmaster.commons.responses.ErrorResponseSimpleFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestControllerAdvice
+
 public class GlobalExceptionHandler {
 
 
@@ -90,6 +93,13 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorSimpleResponse);
     }
+    @ExceptionHandler(ConnectException.class)
+    public ResponseEntity<String> handleDatabaseConnectionException(ConnectException ex) {
+        // Log the exception or print a custom message
+        System.out.println("Error: Unable to connect to the database. Please make sure your Laragon server is running.");
 
+        // You can customize the response message and HTTP status based on your requirements
+        return new ResponseEntity<>("Unable to connect to the database.", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
 }

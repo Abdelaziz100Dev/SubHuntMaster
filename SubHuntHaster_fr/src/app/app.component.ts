@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SubHuntHaster_fr';
+  isClicked: boolean = false;
+  toggleClickedState() {
+    this.isClicked = !this.isClicked;
+  }
 }

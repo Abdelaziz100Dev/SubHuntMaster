@@ -1,0 +1,78 @@
+<div class="p-3">
+  <div class="card">
+    <div class="card-body">
+      <!--<h3>competitions! {{competitions[0].id}}</h3>-->
+      <!--            {{console.log(userWithDemand)}}-->
+      <!-- Display products in a Bootstrap table -->
+      <div class="col-8">
+        <div class="container mt-3">
+<!--          <form [formGroup]="competitionForm" (ngSubmit)="saveCompetition()">-->
+
+<!--            <div class="mb-3">-->
+<!--              <label for="price" class="form-label">Price</label>-->
+<!--              <input type="number"  class="form-control" id="price" formControlName="price" placeholder="Enter price">-->
+<!--              <div *ngIf="competitionForm.get('price')?.hasError('required') && competitionForm.get('price')?.touched" class="text-danger">-->
+<!--                price is required-->
+<!--              </div>-->
+<!--              <div *ngIf="competitionForm.get('price')?.hasError('min') && competitionForm.get('price')?.touched" class="text-danger">-->
+<!--                Price  must be greater than or equal to 0-->
+<!--              </div>-->
+<!--              <div *ngIf="competitionForm.get('price')?.hasError('max') && competitionForm.get('price')?.touched" class="text-danger">-->
+<!--                Price  must be letter than or equal to 10-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="mb-3">-->
+<!--              <label for="demandid" class="form-label">User name done the demand</label>-->
+<!--              <select id="demandid" class="form-control" formControlName="demandid">-->
+<!--                <option selected="selected" > Select Demand</option>-->
+<!--                <option *ngFor="let demand of userWithDemand"  value="{{demand.id}}">{{ demand.user?.name }}</option>-->
+<!--              </select>-->
+<!--              <div *ngIf="competitionForm.get('demandUserName')?.hasError('required') && competitionForm.get('demandUserName')?.touched" class="text-danger">-->
+<!--                required to select-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <button type="submit" class="btn btn-primary">Save</button>-->
+<!--          </form>-->
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Price</th>
+          <th>La Date</th>
+          <th>Status</th>
+          <th>Supreme</th>
+          <th>Modifier</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let competition of competitionList">
+          <td>{{ competition.id }}</td>
+          <td>{{ competition.code }}</td>
+          <td>{{ competition.startTime }}</td>
+          <td>{{ competition.endTime }}</td>
+
+<!--          <td>-->
+<!--            <Button (click)="handleCheck(competition)" class="btn btn-outline-success">-->
+<!--              <i [class]="competition.status === 'APPROVED' ? 'bi bi-check': 'bi bi-circle'"></i>-->
+<!--            </Button>-->
+<!--          </td>-->
+          <td>
+            <Button (click)="deleteCompetition(competition)" class="btn btn-outline-danger">
+              <i class="bi bi-trash"></i>
+            </Button>
+          </td>
+          <td>
+            <Button (click)="updateCompetition(competition)" class="btn btn-outline-primary">
+
+            </Button>
+            <button class="btn btn-primary" (click)="openModal()"><i class="bi bi-pencil-square"></i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
