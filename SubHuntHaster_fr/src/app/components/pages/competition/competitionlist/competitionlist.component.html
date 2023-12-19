@@ -1,78 +1,121 @@
-<div class="p-3">
-  <div class="card">
-    <div class="card-body">
-      <!--<h3>competitions! {{competitions[0].id}}</h3>-->
-      <!--            {{console.log(userWithDemand)}}-->
-      <!-- Display products in a Bootstrap table -->
-      <div class="col-8">
-        <div class="container mt-3">
-<!--          <form [formGroup]="competitionForm" (ngSubmit)="saveCompetition()">-->
+<!--<div class="p-3">-->
+<!--  <div class="card">-->
+<!--    <div class="card-body">-->
+<!--      &lt;!&ndash;<h3>competitions! {{competitions[0].id}}</h3>&ndash;&gt;-->
+<!--      &lt;!&ndash;            {{console.log(userWithDemand)}}&ndash;&gt;-->
+<!--      &lt;!&ndash; Display products in a Bootstrap table &ndash;&gt;-->
+<!--      <div class="col-8">-->
+<!--        <div class="container mt-3">-->
 
-<!--            <div class="mb-3">-->
-<!--              <label for="price" class="form-label">Price</label>-->
-<!--              <input type="number"  class="form-control" id="price" formControlName="price" placeholder="Enter price">-->
-<!--              <div *ngIf="competitionForm.get('price')?.hasError('required') && competitionForm.get('price')?.touched" class="text-danger">-->
-<!--                price is required-->
-<!--              </div>-->
-<!--              <div *ngIf="competitionForm.get('price')?.hasError('min') && competitionForm.get('price')?.touched" class="text-danger">-->
-<!--                Price  must be greater than or equal to 0-->
-<!--              </div>-->
-<!--              <div *ngIf="competitionForm.get('price')?.hasError('max') && competitionForm.get('price')?.touched" class="text-danger">-->
-<!--                Price  must be letter than or equal to 10-->
-<!--              </div>-->
-<!--            </div>-->
+<!--          <Button  (click)="create()" class="btn btn-outline-primary">-->
+<!--            <i class="bi bi-plus-circle"></i>-->
+<!--          </Button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <table class="table">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th>ID</th>-->
+<!--          <th>Code</th>-->
+<!--          <th>Start Time</th>-->
+<!--          <th>End Time</th>-->
+<!--          <th>Status</th>-->
+<!--          <th>Suppression</th>-->
+<!--          <th>modification</th>-->
+<!--          <th>add members to this competition </th>-->
 
-<!--            <div class="mb-3">-->
-<!--              <label for="demandid" class="form-label">User name done the demand</label>-->
-<!--              <select id="demandid" class="form-control" formControlName="demandid">-->
-<!--                <option selected="selected" > Select Demand</option>-->
-<!--                <option *ngFor="let demand of userWithDemand"  value="{{demand.id}}">{{ demand.user?.name }}</option>-->
-<!--              </select>-->
-<!--              <div *ngIf="competitionForm.get('demandUserName')?.hasError('required') && competitionForm.get('demandUserName')?.touched" class="text-danger">-->
-<!--                required to select-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <button type="submit" class="btn btn-primary">Save</button>-->
-<!--          </form>-->
-        </div>
-      </div>
-      <table class="table">
-        <thead>
-        <tr>
-          <th>ID</th>
-          <th>Price</th>
-          <th>La Date</th>
-          <th>Status</th>
-          <th>Supreme</th>
-          <th>Modifier</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let competition of competitionList">
-          <td>{{ competition.id }}</td>
-          <td>{{ competition.code }}</td>
-          <td>{{ competition.startTime }}</td>
-          <td>{{ competition.endTime }}</td>
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr *ngFor="let competition of competitionList">-->
+<!--          <td>{{ competition.id }}</td>-->
+<!--          <td>{{ competition.code }}</td>-->
+<!--          <td>{{ competition.startTime }}</td>-->
+<!--          <td>{{ competition.endTime }}</td>-->
+<!--          <td>{{ competition.status }}</td>-->
 
+
+<!--&lt;!&ndash;          <td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <Button (click)="handleCheck(competition)" class="btn btn-outline-success">&ndash;&gt;-->
+<!--&lt;!&ndash;              <i [class]="competition.status === 'APPROVED' ? 'bi bi-check': 'bi bi-circle'"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;            </Button>&ndash;&gt;-->
+<!--&lt;!&ndash;          </td>&ndash;&gt;-->
 <!--          <td>-->
-<!--            <Button (click)="handleCheck(competition)" class="btn btn-outline-success">-->
-<!--              <i [class]="competition.status === 'APPROVED' ? 'bi bi-check': 'bi bi-circle'"></i>-->
+<!--            <Button (click)="deleteCompetition(competition)" class="btn btn-outline-danger">-->
+<!--              <i class="bi bi-trash"></i>-->
 <!--            </Button>-->
 <!--          </td>-->
-          <td>
-            <Button (click)="deleteCompetition(competition)" class="btn btn-outline-danger">
-              <i class="bi bi-trash"></i>
-            </Button>
-          </td>
-          <td>
-            <Button (click)="updateCompetition(competition)" class="btn btn-outline-primary">
+<!--          <td>-->
+<!--            <Button  (click)="onEditButtonClick(competition)" class="btn btn-outline-primary">-->
+<!--              <i class="bi bi-pencil-square"></i>-->
+<!--            </Button>-->
+<!--&lt;!&ndash;            <button class="btn btn-primary" (click)="onEditButtonClick(competition)"></button>&ndash;&gt;-->
+<!--          </td>-->
+<!--          <td>-->
+<!--            <Button  (click)="addMembers(competition)" class="btn btn-outline-primary">-->
+<!--              <i class="bi bi-person-plus"></i>-->
+<!--            </Button>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
-            </Button>
-            <button class="btn btn-primary" (click)="openModal()"><i class="bi bi-pencil-square"></i></button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<div class="mat-elevation-z8">
+  <Button  (click)="create()" class="btn btn-outline-primary">
+                <i class="bi bi-plus-circle"></i>
+  </Button>
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id. </th>
+      <td mat-cell *matCellDef="let competition"> {{competition.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef> Code </th>
+      <td mat-cell *matCellDef="let competition"> {{competition.code}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="startTime">
+      <th mat-header-cell *matHeaderCellDef> StartTime </th>
+      <td mat-cell *matCellDef="let competition"> {{competition.startTime}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let competition"> {{competition.status}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="endTime">
+      <th mat-header-cell *matHeaderCellDef> La date finale : </th>
+      <td mat-cell *matCellDef="let competition"> {{competition.endTime}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> assign members : </th>
+      <td mat-cell *matCellDef="let competition">
+<!--        <Button  (click)="addMembers(competition)" class="btn btn-outline-primary">-->
+<!--                        <i class="bi bi-person-plus"></i>-->
+<!--        </Button>-->
+        <app-assign-members> </app-assign-members>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[3, 10, 20]"
+
+                 (page)="onPageChange($event)"
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
 </div>
