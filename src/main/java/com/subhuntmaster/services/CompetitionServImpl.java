@@ -1,11 +1,16 @@
 package com.subhuntmaster.services;
 
 import com.subhuntmaster.domain.Competition;
+import com.subhuntmaster.domain.Member;
 import com.subhuntmaster.dto.CompetitionDto;
 import com.subhuntmaster.mappers.ProjectMapper;
 import com.subhuntmaster.repositories.CompetitionRepository;
+import com.subhuntmaster.repositories.MemberRepository;
 import com.subhuntmaster.services.interfaces.CompetitionService;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,16 +21,19 @@ import java.util.List;
 public class CompetitionServImpl implements CompetitionService {
     CompetitionRepository competitionRepository;
     ProjectMapper projectMapper;
+    private final MemberRepository memberRepository;
 
 
-    public CompetitionServImpl(CompetitionRepository competitionRepository, ProjectMapper projectMapper) {
+    public CompetitionServImpl(CompetitionRepository competitionRepository, ProjectMapper projectMapper,
+                               MemberRepository memberRepository) {
         this.competitionRepository = competitionRepository;
         this.projectMapper = projectMapper;
 
+        this.memberRepository = memberRepository;
     }
     @Override
-    public Competition save(Competition competition) {
-       return competitionRepository.save(competition);
+    public CompetitionDto save(Competition competition) {
+       return projectMapper.toDto(competitionRepository.save(competition));
 
     }
 
@@ -35,10 +43,11 @@ public class CompetitionServImpl implements CompetitionService {
     }
 
     @Override
-    public List<CompetitionDto> getAll() {
-        List<CompetitionDto> competitionDtoList = new ArrayList<CompetitionDto>();
-        competitionRepository.findAll().forEach(competition -> competitionDtoList.add(projectMapper.toDto(competition)));
-        return competitionDtoList;
+    public Page<CompetitionDto> getAll(Pageable pageable) {
+        List<CompetitionDto> competitionDtoList = new ArrayList<>();
+        competitionRepository.findAll(pageable)
+                .forEach(competition -> competitionDtoList.add(projectMapper.toDto(competition)));
+        return new PageImpl<>(competitionDtoList, pageable, competitionRepository.count());
     }
 
     @Override
@@ -50,7 +59,7 @@ public class CompetitionServImpl implements CompetitionService {
     public ResponseEntity<String> deleteById(Long id) {
         try {
             competitionRepository.deleteById(id);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Competition deleted successfully");
+            return ResponseEntity.status(HttpStatus.OK).body("Competition deleted successfully");
         } catch (EmptyResultDataAccessException e) {
             // Handle the case where the competition with the given ID is not found
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Competition not found");

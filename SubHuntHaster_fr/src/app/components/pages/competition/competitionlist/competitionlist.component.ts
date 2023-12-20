@@ -73,7 +73,7 @@ export class CompetitionlistComponent implements OnInit,AfterViewInit  {
     this.getCompetitions(page, size);
   }
   public  getCompetitions(page:number, size:number){
-    this.competitionService.getAll(page, size).subscribe(
+    this.competitionService.getAllcompetition(page, size).subscribe(
       data => {
         const competitions = data.competitions;
         const pageable = data.pageable;
@@ -129,12 +129,3 @@ export class CompetitionlistComponent implements OnInit,AfterViewInit  {
   }
 }
 
-
-// export interface PeriodicElement {
-//   name: string;
-//   position: number;
-//   weight: number;
-//   symbol: string;
-// }
-//
-// const ELEMENT_DATA: CompetitionModel[] = [];

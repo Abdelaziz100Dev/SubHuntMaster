@@ -21,8 +21,6 @@ public class Member {
     @Column(name = "id", nullable = false)
     private Long id ;
 
-
-
     private Integer number;
 
     private String firstName;

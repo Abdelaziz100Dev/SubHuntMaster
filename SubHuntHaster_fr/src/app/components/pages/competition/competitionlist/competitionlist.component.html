@@ -102,10 +102,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> assign members : </th>
       <td mat-cell *matCellDef="let competition">
-<!--        <Button  (click)="addMembers(competition)" class="btn btn-outline-primary">-->
-<!--                        <i class="bi bi-person-plus"></i>-->
-<!--        </Button>-->
-        <app-assign-members> </app-assign-members>
+        <app-assign-members [competitionId]="competition.id" > </app-assign-members>
       </td>
     </ng-container>
 

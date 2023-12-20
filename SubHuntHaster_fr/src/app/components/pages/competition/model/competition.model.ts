@@ -7,7 +7,6 @@ export class CompetitionModel {
               public startTime: Date,
               public status: string,
               public endTime: Date) {
-
   }
 
 }

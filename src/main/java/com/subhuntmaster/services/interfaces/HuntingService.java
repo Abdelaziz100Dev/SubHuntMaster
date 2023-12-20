@@ -3,6 +3,7 @@ package com.subhuntmaster.services.interfaces;
 import com.subhuntmaster.domain.Hunting;
 import com.subhuntmaster.domain.Level;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

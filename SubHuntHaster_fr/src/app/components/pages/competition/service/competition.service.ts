@@ -8,24 +8,26 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class CompetitionService {
-  public URL = "http://localhost:8080/api/competition";
+  public URLCOMPETITION = "http://localhost:8080/api/competition";
+  public URLMEMBERS = "http://localhost:8080/api/member";
+
 
   constructor(private http :HttpClient) {
 
   }
   // public deleteDevis(devis:DevisModel) {
-  //   return this.http.delete<DevisModel>(this.URL+"/"+devis.id);
+  //   return this.http.delete<DevisModel>(this.URLCOMPETITION+"/"+devis.id);
   //
   // }
 
-  getAll(page: number, size: number): Observable<any> {
+  getAllcompetition(page: number, size: number): Observable<any> {
     const params   = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
 
     console.log('params', params);
 
-    return this.http.get<any>(this.URL, { params }).pipe(
+    return this.http.get<any>(this.URLCOMPETITION, { params }).pipe(
       map(response => {
         return {
           competitions: response.content,
@@ -44,11 +46,15 @@ export class CompetitionService {
     );
   }
   updateCompetition(competition: CompetitionModel) {
-    return this.http.post(this.URL,competition);
+    return this.http.post(this.URLCOMPETITION,competition);
   }
   deleteCompetition(competition: CompetitionModel) {
-    return this.http.delete(this.URL+"/"+competition.id);
+    return this.http.delete(this.URLCOMPETITION+"/"+competition.id);
 
+  }
+  // getallMembers
+  getAllMembers() {
+    return this.http.get<Array<any>>(this.URLMEMBERS);
   }
 
 }

@@ -3,12 +3,12 @@ package com.subhuntmaster.controllers;
 import com.subhuntmaster.domain.Competition;
 import com.subhuntmaster.dto.CompetitionDto;
 import com.subhuntmaster.services.interfaces.CompetitionService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/competition")
@@ -21,17 +21,21 @@ public class CompetitionController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<CompetitionDto>>  getAll() {
-        return  new ResponseEntity<>(competitionService.getAll(), HttpStatus.OK);
+    public Page<CompetitionDto> getAll(Pageable pageable) {
+        return  competitionService.getAll(pageable);
     }
     @GetMapping("/{code}")
     public ResponseEntity<Competition> getCompetitionByCode(String code) {
         return  new ResponseEntity<>(competitionService.getCompetitionByCode(code), HttpStatus.OK);
     }
     @GetMapping("/{id}")
+    public ResponseEntity<Competition> getCompetitionById(Long id) {
+        return  new ResponseEntity<>(competitionService.getCompetitionById(id), HttpStatus.OK);
+    }
 
     @PostMapping("")
-    public ResponseEntity<Competition> save(@RequestBody Competition competition) {
+    public ResponseEntity<CompetitionDto> save(@RequestBody Competition competition) {
+//        return new ResponseEntity<>(null, HttpStatus.OK);
         return  new ResponseEntity<>(competitionService.save(competition), HttpStatus.OK);
     }
 

@@ -1,5 +1,8 @@
 package com.subhuntmaster.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.subhuntmaster.commons.helper.CustomTimeDeserializer;
+import com.subhuntmaster.enums.competitionStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,9 +27,11 @@ public class Competition {
     @Temporal(TemporalType.DATE) // by default, it is TemporalType.TIMESTAMP
     private Date date;
 
+    @JsonDeserialize(using = CustomTimeDeserializer.class)
     @Temporal(TemporalType.TIME)
     private Date startTime;
 
+    @JsonDeserialize(using = CustomTimeDeserializer.class)
     @Temporal(TemporalType.TIME)
     private Date endTime;
 
@@ -36,7 +41,10 @@ public class Competition {
 
     private float amount;
 
+    @Enumerated(EnumType.STRING)
+    private competitionStatus status;
+
     @OneToMany(mappedBy = "competition")
-    private List<Ranking> competitions = new ArrayList<>();
+    private List<Ranking> rankings = new ArrayList<>();
 
  }

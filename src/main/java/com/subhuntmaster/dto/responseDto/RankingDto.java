@@ -16,8 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RankingDto {
-    private String competitionCode;
-    private Long memberId;
     private Integer rank;
     private Integer score;
     private CompetitionDto competition;

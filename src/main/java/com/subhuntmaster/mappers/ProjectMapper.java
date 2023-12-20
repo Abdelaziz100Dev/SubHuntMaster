@@ -34,13 +34,20 @@ public class ProjectMapper {
         return Objects.isNull(fish) ? null : modelMapper.map(fish, FishDto.class);
     }
     public RankingDto toRankingDto(Ranking ranking) {
-        RankingDto rankingDto = new RankingDto();
-        rankingDto.setCompetitionCode(ranking.getCompetition().getCode());
-        rankingDto.setMemberId(ranking.getMember().getId());
-        rankingDto.setRank(ranking.getRank());
-        rankingDto.setScore(ranking.getScore());
-        rankingDto.setCompetition(toDto(ranking.getCompetition()));
-        rankingDto.setMember(toDto(ranking.getMember()));
+//        RankingDto rankingDto = new RankingDto();
+////        rankingDto.setCompetition(CompetitionDto.builder().id(ranking.getCompetition().getId()).build());
+//        rankingDto.setMember(MemberDto.builder().id(ranking.getMember().getId()).build());
+//        rankingDto.setRank(ranking.getRank());
+//        rankingDto.setScore(ranking.getScore());
+//        rankingDto.setCompetition(toDto(ranking.getCompetition()));
+//        rankingDto.setMember(toDto(ranking.getMember()));
+        RankingDto rankingDto = RankingDto.builder()
+                .rank(ranking.getRank())
+                .score(ranking.getScore())
+                .competition(CompetitionDto.builder().id(ranking.getCompetition().getId()).build())
+                .member(MemberDto.builder().id(ranking.getMember().getId()).build())
+                .build();
+//        System.out.println("jjjjjj :"+ranking.getCompetition().getId());
         return rankingDto;
 
 //        return Objects.isNull(ranking) ? null : modelMapper.map(ranking, RankingDto.class);

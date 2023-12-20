@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface RankingService{
-    RankingDto save(Ranking ranking);
+    RankingDto save(RankingDto ranking);
     ResponseEntity<String> delete(Long id);
     List<Ranking> getAll();
     Ranking getRankingById(RankingKey id);

@@ -1,2 +1,7 @@
-package com.subhuntmaster.enums;public class Competitionstatus {
+package com.subhuntmaster.enums;
+
+public enum competitionStatus {
+    OPEN,
+    CLOSED
+
 }

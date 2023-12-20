@@ -13,20 +13,19 @@ import lombok.*;
 public class Ranking {
 
     @EmbeddedId
-    private RankingKey id = new RankingKey();
+    private RankingKey id;
 
     @Column(name = "`rank`")
     private Integer rank;
+
     private Integer score;
 
     @ManyToOne
-    @MapsId("competitionCode")
-    @JoinColumn(name = "competition_id")
+    @JoinColumn(name = "competition_id",insertable = false,updatable = false)
     private Competition competition;
 
     @ManyToOne
-    @MapsId("memberId")
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id",insertable = false,updatable = false)
     private Member member;
 
 

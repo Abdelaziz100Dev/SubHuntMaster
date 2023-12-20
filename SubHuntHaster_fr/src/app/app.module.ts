@@ -17,6 +17,7 @@ import { CreateComponent } from './components/pages/competition/create/create.co
 import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { AssignMembersComponent } from './components/pages/competition/assign-members/assign-members.component';
+import { RankComponent } from './components/pages/rank/rank.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { AssignMembersComponent } from './components/pages/competition/assign-me
     // CompetitionlistComponent,
     UpdateComponent,
     CreateComponent,
+    RankComponent,
     // AssignMembersComponent,
     // ModalComponent
   ],

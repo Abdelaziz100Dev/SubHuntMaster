@@ -22,15 +22,21 @@ public class RankingServImpl implements RankingService {
         this.projectMapper=projectMapper;
     }
     @Override
-    public RankingDto save(Ranking ranking) {
-        canRankBeSaved(ranking);
-        return   projectMapper.toRankingDto(rankingRepository.save(ranking));
+    public RankingDto save(RankingDto ranking) {
+//        projectMapper.toRankingDto(ranking);
+        RankingKey rankingKey = RankingKey.builder().competition_id(ranking.getCompetition().getId())
+                .member_id(ranking.getMember().getId()).build();
+        Ranking ranking1 = Ranking.builder().id(rankingKey).rank(ranking.getRank()).competition(Competition.builder().id(ranking.getCompetition().getId()).build()).member(Member.builder().id(ranking.getMember().getId()).build()).score(ranking.getScore()).build();
+
+        canRankBeSaved(ranking1);
+        return   projectMapper.toRankingDto(rankingRepository.save(ranking1));
 
     }
 
     private void canRankBeSaved(Ranking ranking) {
+
         if(rankingRepository.existsById(ranking.getId())) {
-            throw new IllegalArgumentException("Rank already exists");
+            throw new IllegalArgumentException("Member already exists");
         }
     }
 

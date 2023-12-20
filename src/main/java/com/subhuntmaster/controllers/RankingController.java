@@ -25,7 +25,7 @@ public class RankingController {
     }
 
     @PostMapping("")
-    public RankingDto save(@RequestBody Ranking ranking){
+    public RankingDto save(@RequestBody RankingDto ranking){
             return rankingService.save(ranking);
     }
 

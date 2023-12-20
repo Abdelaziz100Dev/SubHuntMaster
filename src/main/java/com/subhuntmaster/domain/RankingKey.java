@@ -2,15 +2,21 @@ package com.subhuntmaster.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 @Embeddable
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class RankingKey implements Serializable{
 
-    @Column(name = "competition_code")
-    private Long competitionCode;
-    @Column(name = "member_id")
-    private Long memberId;
+
+    private Long competition_id;
+
+    private Long member_id;
 }

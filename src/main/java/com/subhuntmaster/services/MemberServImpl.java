@@ -8,10 +8,11 @@ import com.subhuntmaster.services.interfaces.MemberService;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class MemberServImpl  implements MemberService {
     MemberRepository memberRepository;
     ProjectMapper projectMapper;
@@ -21,7 +22,8 @@ public class MemberServImpl  implements MemberService {
     }
     @Override
     public ResponseEntity<Member> save(Member member) {
-        return new ResponseEntity(memberRepository.save(member), HttpStatus.CREATED) ;
+
+        return new ResponseEntity(projectMapper.toDto(memberRepository.save(member)), HttpStatus.CREATED) ;
     }
 
     @Override
