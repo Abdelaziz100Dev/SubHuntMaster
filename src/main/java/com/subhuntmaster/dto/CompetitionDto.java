@@ -1,6 +1,7 @@
 package com.subhuntmaster.dto;
 
 import com.subhuntmaster.domain.Member;
+import com.subhuntmaster.enums.competitionStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +17,8 @@ import java.util.List;
 public class CompetitionDto {
     private Long id;
     private String code;
+    private competitionStatus status;
+
     private Date startTime;
     private Date endTime;
 }

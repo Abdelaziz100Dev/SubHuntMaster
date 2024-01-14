@@ -18,6 +18,12 @@ import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { AssignMembersComponent } from './components/pages/competition/assign-members/assign-members.component';
 import { RankComponent } from './components/pages/rank/rank.component';
+// import { DialogdisplayerComponent } from './components/pages/competition/dialogdisplayer/dialogdisplayer.component';
+import { MatDialogComponent } from './components/pages/competition/mat-dialog/mat-dialog.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatDialogModule} from "@angular/material/dialog";
+import { MemberListComponent } from './components/pages/member/member-list/member-list.component';
+import { MemberCreateComponent } from './components/pages/member/member-create/member-create.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +33,11 @@ import { RankComponent } from './components/pages/rank/rank.component';
     UpdateComponent,
     CreateComponent,
     RankComponent,
+    // DialogdisplayerComponent,
+    MatDialogComponent,
+    MemberListComponent,
+    MemberCreateComponent,
+
     // AssignMembersComponent,
     // ModalComponent
   ],
@@ -40,7 +51,9 @@ import { RankComponent } from './components/pages/rank/rank.component';
     BrowserAnimationsModule,
     MdbCheckboxModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDialogModule,
+    MatButtonModule
 
   ],
   providers: [],

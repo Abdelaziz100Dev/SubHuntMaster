@@ -1,0 +1,30 @@
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="text-center">Create Competition</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="firstName">firstName</label>
+              <input type="text"  class="form-control" id="firstName" formControlName="firstName" />
+            </div>
+            <div class="form-group">
+              <label for="number">Number :</label>
+              <input type="number" id="number" formControlName="number"  class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="accessionDate">accessionDate :</label>
+              <input type="date" id="accessionDate" formControlName="accessionDate"  class="form-control" />
+             </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

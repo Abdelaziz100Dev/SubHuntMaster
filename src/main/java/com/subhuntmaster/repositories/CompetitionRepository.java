@@ -16,6 +16,4 @@ public interface CompetitionRepository extends JpaRepository<Competition, Long> 
 
     Competition findByCode(String code);
     Page<Competition> findAll(Pageable pageable);
-//    @Query("SELECT c, m FROM Competition c LEFT JOIN c.members m WHERE m IS NULL")
-//    Page<Object[]> findCompetitionWithNonAssociatedMembers(Pageable pageable);
 }

@@ -3,6 +3,8 @@ package com.subhuntmaster.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Builder
 @Entity
 @NoArgsConstructor
@@ -17,5 +19,8 @@ public class Level {
     private String Code;
     private String description;
     private String points;
+
+    @OneToMany(mappedBy = "level")
+    private List<Fish> fish;
 
 }

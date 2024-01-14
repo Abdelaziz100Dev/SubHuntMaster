@@ -8,6 +8,8 @@ import {NgForOf, NgIf} from "@angular/common";
 import {CompetitionService} from "../service/competition.service";
 import {RankService} from "../../rank/service/rank.service";
 import {RankModel} from "../../rank/model/RankModel.model";
+import {MatDialog} from "@angular/material/dialog";
+import {MatDialogComponent} from "../mat-dialog/mat-dialog.component";
 export  interface memberInCompetition{
   inThisCompetition: boolean;
   id: number;
@@ -26,7 +28,7 @@ export class AssignMembersComponent {
   selectedMembers = new FormControl();
   membersList: memberInCompetition[] = [];
   // competitionId: string| null = null;
-  constructor( private  competitionService: CompetitionService,private route: ActivatedRoute,private rankService :RankService) {}
+  constructor(public dialog: MatDialog, private  competitionService: CompetitionService,private route: ActivatedRoute,private rankService :RankService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -62,9 +64,14 @@ export class AssignMembersComponent {
         console.log(data)
       },
       error => {
-        if (error.details) {
-          console.log("Error Details:", error.details);
-        }
+
+          console.log("Error Details:", {error});
+          this.dialog.open(MatDialogComponent, {
+            data: {title: "Error",
+              content:error?.details
+            }
+          });
+
       }
     )
   }

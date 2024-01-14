@@ -3,6 +3,8 @@ package com.subhuntmaster.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Builder
 @Entity
 @NoArgsConstructor
@@ -17,4 +19,11 @@ public class Fish {
 
         private String name;
         private float averageWeight;
+
+        @OneToMany(mappedBy = "fish")
+        private List<Hunting> hunting;
+
+        @ManyToOne
+        @JoinColumn(name = "level_id")
+        private Level level;
 }

@@ -37,10 +37,7 @@ export class CreateComponent implements OnInit{
       const updatedCompetition: CompetitionModel = {
         ...this.competitionForm.value,
       };
-      console.log(updatedCompetition);
-      console.log(this.competitionForm.value);
-      console.log(" llllllllllll");
-      // Call API to update the Competition
+
       this.competitionService.updateCompetition(updatedCompetition).subscribe(
         () => {
           // this.competitionService.getAll();

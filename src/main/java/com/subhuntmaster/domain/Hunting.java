@@ -20,4 +20,8 @@ public class Hunting {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Member member;
+
+    @ManyToOne
+    @JoinColumn(name = "fish_id")
+    private Fish fish;
 }

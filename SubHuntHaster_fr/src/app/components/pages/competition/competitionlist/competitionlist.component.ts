@@ -14,6 +14,10 @@ import {map, startWith} from 'rxjs/operators';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {AssignMembersComponent} from "../assign-members/assign-members.component";
+import {MatButtonModule} from "@angular/material/button";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {MatDialogComponent} from "../mat-dialog/mat-dialog.component";
+// import {DialogdisplayerComponent} from "../dialogdisplayer/dialogdisplayer.component";
 
 
 @Component({
@@ -31,7 +35,10 @@ import {AssignMembersComponent} from "../assign-members/assign-members.component
     CommonModule,
     MatTableModule,
     MatPaginatorModule,
-    AssignMembersComponent
+    AssignMembersComponent,
+    MatButtonModule,
+    MatDialogModule,
+
   ],
 })
 export class CompetitionlistComponent implements OnInit,AfterViewInit  {
@@ -63,6 +70,7 @@ export class CompetitionlistComponent implements OnInit,AfterViewInit  {
     //     return firstName ? this._filter(firstName as string) : this.options.slice();
     //   }),
     // );
+    // this.dialogdisplayerComponent.openDialog();
 
   }
 
@@ -91,6 +99,7 @@ export class CompetitionlistComponent implements OnInit,AfterViewInit  {
         console.error('Error fetching competitions', error);
       }
       );
+    // this.dialog.open(MatDialogComponent);
   }
 
   deleteCompetition(competition: any) {

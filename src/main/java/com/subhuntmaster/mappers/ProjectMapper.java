@@ -9,14 +9,12 @@ import com.subhuntmaster.dto.FishDto;
 import com.subhuntmaster.dto.MemberDto;
 import com.subhuntmaster.dto.responseDto.RankingDto;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
 @Component
 public class ProjectMapper {
-    @Autowired
     private ModelMapper modelMapper;
 
     public <S, T> T mapToDto(S source, Class<T> targetClass) {

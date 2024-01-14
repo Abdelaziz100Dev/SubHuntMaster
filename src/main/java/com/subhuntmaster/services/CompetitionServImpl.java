@@ -1,11 +1,15 @@
 package com.subhuntmaster.services;
 
 import com.subhuntmaster.domain.Competition;
-import com.subhuntmaster.domain.Member;
+import com.subhuntmaster.domain.Hunting;
+import com.subhuntmaster.domain.Ranking;
 import com.subhuntmaster.dto.CompetitionDto;
+import com.subhuntmaster.dto.responseDto.RankingDto;
 import com.subhuntmaster.mappers.ProjectMapper;
 import com.subhuntmaster.repositories.CompetitionRepository;
+import com.subhuntmaster.repositories.HuntingRepository;
 import com.subhuntmaster.repositories.MemberRepository;
+import com.subhuntmaster.repositories.RankingRepository;
 import com.subhuntmaster.services.interfaces.CompetitionService;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -16,7 +20,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 public class CompetitionServImpl implements CompetitionService {
     CompetitionRepository competitionRepository;
@@ -25,7 +33,7 @@ public class CompetitionServImpl implements CompetitionService {
 
 
     public CompetitionServImpl(CompetitionRepository competitionRepository, ProjectMapper projectMapper,
-                               MemberRepository memberRepository) {
+                               MemberRepository memberRepository, HuntingRepository huntingRepository, RankingRepository rankingRepository) {
         this.competitionRepository = competitionRepository;
         this.projectMapper = projectMapper;
 

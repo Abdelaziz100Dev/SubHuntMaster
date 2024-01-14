@@ -2,6 +2,7 @@ package com.subhuntmaster.services.interfaces;
 
 import com.subhuntmaster.domain.Competition;
 import com.subhuntmaster.dto.CompetitionDto;
+import com.subhuntmaster.dto.responseDto.RankingDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ public interface CompetitionService {
 
     Competition getCompetitionById(Long id);
     Competition update(Long id, Competition competition);
+
 
 
 }

@@ -3,6 +3,7 @@ package com.subhuntmaster.controllers;
 import com.subhuntmaster.domain.Competition;
 import com.subhuntmaster.dto.CompetitionDto;
 import com.subhuntmaster.services.interfaces.CompetitionService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -34,15 +35,12 @@ public class CompetitionController {
     }
 
     @PostMapping("")
-    public ResponseEntity<CompetitionDto> save(@RequestBody Competition competition) {
+    public ResponseEntity<CompetitionDto> save(@Valid @RequestBody Competition competition) {
 //        return new ResponseEntity<>(null, HttpStatus.OK);
         return  new ResponseEntity<>(competitionService.save(competition), HttpStatus.OK);
     }
 
-//    @DeleteMapping("/{code}")
-//    public ResponseEntity<Competition> delete(@PathVariable String code) {
-//        return  new ResponseEntity<>(competitionService.delete(code), HttpStatus.OK);
-//    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) {
